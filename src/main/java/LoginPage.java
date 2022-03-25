@@ -24,6 +24,10 @@ public class LoginPage extends AbstractPage {
     private WebElement inStorage;
     @FindBy(xpath = "//h2[contains(text(),'Факультет подготовки и переподготовки инженерных к')]")
     private WebElement secondTitle;
+    @FindBy(xpath = "//div[@class='messages error']")
+    private WebElement messageError;
+    @FindBy(xpath = "//div[@class='messages error']")
+    private WebElement messageErrorTwo;
 
     public LoginPage() {
         PageFactory.initElements(driver, this);
