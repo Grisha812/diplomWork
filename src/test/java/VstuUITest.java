@@ -88,12 +88,10 @@ public class VstuUITest extends AfterTest{
         String result2 = driver.findElement(By.xpath("//input[@id='edit-pass']")).getText();
         Assertions.assertEquals("", result2);
         
-        loginPage.negativeLog("fpik");
-        String result3 = driver.findElement(By.xpath("//input[@id='edit-pass']")).getText();
-        Assertions.assertEquals("", result3);
-        loginPage.negativePass("guest");
-        String result4 = driver.findElement(By.xpath("//input[@id='edit-name']")).getText();
-        Assertions.assertEquals("", result4);
+        loginPage.negativeLog("fpik");        
+        Assertions.assertEquals("", result2);
+        loginPage.negativePass("guest");        
+        Assertions.assertEquals("", result);
     }
 
     @Description(value = "1. Открыть сайт https://www.vstu.ru\n" +
