@@ -43,4 +43,18 @@ public class LoginPage extends AbstractPage {
 
         return;
     }
+    public void negativeLog (String name) {
+
+        login.sendKeys(name);
+        enter.click();
+        messageError.isDisplayed();
+        driver.get("http://dump.vstu.ru/main?destination=node%2F1");
+        driver.navigate().refresh();
+    }
+    public void negativePass (String password) {
+
+        pass.sendKeys(password);
+        enter.click();
+        messageErrorTwo.isDisplayed();
+    }
 }
