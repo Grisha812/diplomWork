@@ -69,7 +69,10 @@ public class VstuUITest extends AfterTest{
             "6. Перейти в раздел : Факультет подготовки и переподготовки инжинерных кадров\n" +
             "7. Проверить, что произошёл переход в выбранный раздел\n" +
             "8. Нажать кнопку : выйти\n" +
-            "9. Проверить, что после выхода поля логина и пароля - пусты\n")
+            "9. Проверить, что после выхода поля логина и пароля - пусты\n" +
+            "10. Негативная проверка : \n" +
+                    " - ввод только логина (появилось сообщение о ошибке)\n" +
+                    " - ввод только пароля (появилось сообщение о ошибке)\n")
     @Test
     @Order(3)
     @DisplayName("Авторизация в файловом хранилище")
@@ -84,6 +87,13 @@ public class VstuUITest extends AfterTest{
         Assertions.assertEquals("", result);
         String result2 = driver.findElement(By.xpath("//input[@id='edit-pass']")).getText();
         Assertions.assertEquals("", result2);
+        
+        loginPage.negativeLog("fpik");
+        String result3 = driver.findElement(By.xpath("//input[@id='edit-pass']")).getText();
+        Assertions.assertEquals("", result3);
+        loginPage.negativePass("guest");
+        String result4 = driver.findElement(By.xpath("//input[@id='edit-name']")).getText();
+        Assertions.assertEquals("", result4);
     }
 
     @Description(value = "1. Открыть сайт https://www.vstu.ru\n" +
