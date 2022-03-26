@@ -23,6 +23,7 @@ public class VstuUITest extends AfterTest{
             "7. Проверить, что каждая страница загрузилась\n")
     @Test
     @Order(1)
+  //  @RepeatedTest(3)
     @DisplayName("Приёмная комиссия. Навигация")
     public void checkAbiturient() {
         driver.get("https://www.vstu.ru");
