@@ -8,7 +8,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
 
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 abstract public class AfterTest {
@@ -29,12 +34,25 @@ abstract public class AfterTest {
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS); //страница должна загрузиться в течении 10 сек.
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);  //время взаимодействия с элементами
         AbstractPage.setDriver(driver);
+        System.setProperty("https.protocols", "TLSv1.1");
     }
 
     @Attachment(value = "Attachment Screenshot", type = "image/png")
     public byte[] makeScreenshot() {
         return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
+
+    // it's new
+    @AfterEach
+    public void tearDown() {
+        LogEntries browserLogs = driver.manage().logs().get(LogType.BROWSER);
+        List<LogEntry> allLogRows = browserLogs.getAll();
+
+        if (allLogRows.size() > 0) {
+            System.out.println("IT's FAIL!!!!!!");
+        }
+    }
+    // it's new
 
     @AfterEach
     public void onTestFailure() {
