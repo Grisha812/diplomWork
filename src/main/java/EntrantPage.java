@@ -11,13 +11,13 @@ public class EntrantPage extends AbstractPage{
     private WebElement studying;
     @FindBy (xpath = "//span[contains(text(),'Выбор специальности')]")
     private WebElement change;
-    @FindBy (xpath = "//span[contains(text(),'Прием 2022')]")
+    @FindBy (xpath = "//span[contains(text(),'Прием 2023')]")
     private WebElement reception;
     @FindBy (xpath = "//span[contains(text(),'Контакты')]")
     private WebElement contains;
 
     //title каждой вкладки
-    @FindBy(xpath = "//img[@alt='ВолгГТУ']")
+    @FindBy(xpath = "//h1[contains(text(),'Направления подготовки бакалавриата/специалитета')]") //  //img[@alt='ВолгГТУ']
     private WebElement entrantTitle;
     @FindBy(xpath = "//h1[contains(text(),'Учись в политехе')]")
     private WebElement studyingTitle;
@@ -34,7 +34,8 @@ public class EntrantPage extends AbstractPage{
     }
     public EntrantPage abiturient() {
         entrant.click();
-        String title = driver.getTitle();
+       String title = driver.getTitle();
+      //  Assertions.assertEquals("Направления подготовки бакалавриата/специалитета", entrantTitle.getText());
         Assertions.assertEquals(title, "Направления подготовки бакалавриата/специалитета");
         studying.click();
         Assertions.assertEquals("Учись в политехе", studyingTitle.getText());
@@ -47,3 +48,4 @@ public class EntrantPage extends AbstractPage{
         return this;
     }
 }
+
