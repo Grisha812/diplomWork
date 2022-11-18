@@ -18,19 +18,19 @@ public class SurfingPage extends AbstractPage {
     private WebElement cooperation;
     @FindBy(xpath = "(//span[contains(text(),'Справочник')])[2]")
     private WebElement reference;
-    @FindBy(xpath = "//span[@id='boiler']")
+    @FindBy(xpath = "(//img)[15]")
     private WebElement pointBoiling;
-    @FindBy(xpath = "//div[@class='header-wrapper']//p[1]//a[1]//img[1]")
+    @FindBy(xpath = "(//img)[14]")
     private WebElement supportUnit;
-    @FindBy(xpath = "//span[@class='dis-env']")
+    @FindBy(xpath = "(//span[@class='dis-env'])[1]")
     private WebElement dostupSreda;
-    @FindBy(xpath = "//span[contains(text(),'Версия для слабовидящих')]")
+    @FindBy(xpath = "(//span[contains(text(),'Версия для слабовидящих')])[1]")
     private WebElement visuallyImpaired;
-    @FindBy(xpath = "//li[@class='white']//a[@href='#']//div[contains(text(),'A')]")
+    @FindBy(xpath = "(//div[contains(text(),'A')])[4]")
     private WebElement white;
-    @FindBy(xpath = "//li[@class='black']//a[@href='#']//div[contains(text(),'A')]")
+    @FindBy(xpath = "(//div[contains(text(),'A')])[5]")
     private WebElement black;
-    @FindBy(xpath = "//li[@class='blue']//a[@href='#']//div[contains(text(),'A')]")
+    @FindBy(xpath = "(//div[contains(text(),'A')])[6]")
     private WebElement blue;
 
     @FindBy(xpath = "//img[@alt='ВолгГТУ']")
@@ -47,7 +47,7 @@ public class SurfingPage extends AbstractPage {
     private WebElement developmentTitle;
     @FindBy (xpath = "//h1[contains(text(),'Сотрудничество')]")
     private WebElement cooperationTitle;
-    @FindBy (xpath = "//h1[contains(text(),'Справочник')]")
+    @FindBy (xpath = "//h1[contains(text(),'Справочник телефонов')]")
     private WebElement referenceTitle;
     @FindBy (xpath = "//h1[contains(text(),'Пространство коллективной работы «Точка Кипения»')]")
     private WebElement pointTitle;
@@ -74,7 +74,7 @@ public class SurfingPage extends AbstractPage {
         cooperation.click();
         Assertions.assertEquals("Сотрудничество", cooperationTitle.getText());
         reference.click();
-        Assertions.assertEquals("Справочник", referenceTitle.getText());
+        Assertions.assertEquals("Справочник телефонов", referenceTitle.getText());
         pointBoiling.click();
         Assertions.assertEquals("Пространство коллективной работы «Точка Кипения»", pointTitle.getText());
         supportUnit.click();
@@ -140,3 +140,4 @@ public class SurfingPage extends AbstractPage {
         return this;
     }
 }
+
